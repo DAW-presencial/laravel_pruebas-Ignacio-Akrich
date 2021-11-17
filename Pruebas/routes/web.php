@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('agenda', function(){
     return view('agenda');
 });
+
+
+Route::get('formulario', FormController::class . '@index');
