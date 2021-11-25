@@ -1,4 +1,10 @@
 {
+    "Name":"Name",
+    "Email":"Email",
+    "Password":"Password",
+    "Confirm Password":"Confirm Password",
+
+
     "All rights reserved.": "All rights reserved.",
     "Forbidden": "Forbidden",
     "Go Home": "Go Home",

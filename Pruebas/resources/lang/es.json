@@ -1,4 +1,9 @@
 {
+    "Name":"Nombre",
+    "Email":"Correo Electronico",
+    "Password":"Contraseña",
+    "Confirm Password":"Confirmar Contraseña",
+
     "All rights reserved.": "Todos los derechos reservados.",
     "Forbidden": "Prohibido",
     "Go Home": "Ir a inicio",

@@ -22,5 +22,4 @@ Route::get('agenda', function(){
     return view('agenda');
 });
 
-
-Route::get('formulario', FormController::class . '@index');
+Route::get('{lang}/formulario', [FormController::class, 'swap']);

@@ -24,16 +24,16 @@
     }
     ?>  
     <form method="post">
-        <label for="nombre">Nombre:</label>
+        <label for="nombre">@lang('Name'):</label>
         <input type="text" name="nombre" id="nombre" value="<?php if (isset($_POST['submit'])) { echo $name; } ?>">
         <br>
-        <label for="email">Email:</label>
+        <label for="email">@lang('Email'):</label>
         <input type="email" name="email" id="email" value="<?php if (isset($_POST['submit'])) { echo $email; } ?>">
         <br>
-        <label for="passwd">Contraseña:</label>
+        <label for="passwd">@lang('Password'):</label>
         <input type="password" name="passwd" id="passwd" value="<?php if (isset($_POST['submit'])) { echo $password; } ?>">
         <br>
-        <label for="conf_passwd">Confirmar contraseña:</label>
+        <label for="conf_passwd">@lang('Confirm Password'):</label>
         <input type="password" name="conf_passwd" id="conf_passwd" value="<?php if (isset($_POST['submit'])) { echo $confirm_password; } ?>">
         <br>
         <input type="submit" name="submit" value="Enviar">  

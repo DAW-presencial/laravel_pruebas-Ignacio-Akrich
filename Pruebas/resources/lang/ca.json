@@ -1,4 +1,9 @@
 {
+    "Name":"Nom",
+    "Email":"Correu Electronic",
+    "Password":"contrasenya",
+    "Confirm Password":"Confirmar contrasenya",
+
     "All rights reserved.": "Tots els drets reservats.",
     "Forbidden": "Prohibit",
     "Go Home": "Aneu a l'inici",
