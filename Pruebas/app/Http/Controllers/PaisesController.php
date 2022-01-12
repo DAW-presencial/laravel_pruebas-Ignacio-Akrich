@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
-
-
-class AgendaController extends Controller
+class PaisesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +13,7 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        Gate::define('agenda', function ($user) {
-            return true;
-        });
-        abort_unless(Gate::allows('agenda'), 403);
-        return 'Hola mundo, estas en el AgendaController@index';
+        //
     }
 
     /**

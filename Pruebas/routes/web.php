@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +13,12 @@ use App\Http\Controllers\FormController;
 |
 */
 
-/* Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-}); */
-
-Route::get('agenda', function(){
-    return view('agenda');
 });
 
-Route::get('{lang}/formulario', [FormController::class, 'swap']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
