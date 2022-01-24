@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+ 
 Route::get('/dashboard', function () {
+    Gate::define('puerta', function () {
+        return true;
+    });
+    abort_unless(Gate::allows('puerta'), 403);
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__.'/auth.php'; 
+
+Route::resource('users', UserController::class);
+
+Route::resource('posts', PostController::class);

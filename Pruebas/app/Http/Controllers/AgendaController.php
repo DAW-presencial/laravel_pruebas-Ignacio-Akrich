@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 
 
 
+
 class AgendaController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class AgendaController extends Controller
     public function index()
     {
         Gate::define('agenda', function ($user) {
-            return true;
+            return false;
         });
         abort_unless(Gate::allows('agenda'), 403);
         return 'Hola mundo, estas en el AgendaController@index';
