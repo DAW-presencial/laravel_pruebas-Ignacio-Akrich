@@ -71,7 +71,7 @@ class UserController extends Controller
     {
         return view('users.edit',compact('user'));
     } 
-
+ 
     /**
      * Update the specified resource in storage.
      *
