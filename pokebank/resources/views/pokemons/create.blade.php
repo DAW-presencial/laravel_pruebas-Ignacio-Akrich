@@ -1,5 +1,15 @@
 @extends('pokemons.layout')
 @section('content')
+@if($errors->any())
+        <div>
+            <ul>
+                <li scope="col">Errores</li>
+                @foreach($errors->all() as $e)
+                        <li>{{ $e }}</>
+                @endforeach
+            </ul>
+        </div>
+@endif
     <form action="/pokemons" enctype="multipart/form-data" method="POST">
         @csrf
         <label>@lang('Name')</label>

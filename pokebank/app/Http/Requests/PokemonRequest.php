@@ -24,7 +24,7 @@ class PokemonRequest extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'require|max:400',
+            'description' => 'required|max:400',
             'types' => 'required|array|min:1'
         ];
     }

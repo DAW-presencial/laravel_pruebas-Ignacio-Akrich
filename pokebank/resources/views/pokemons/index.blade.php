@@ -1,6 +1,6 @@
 @extends('pokemons.layout')
 @section('content')
-<a href="pokemons/create" class="btn btn-primary">Create</a>
+<a href="../pokemons/create" class="btn btn-primary">Create</a>
     <table class="table table-striped">
         <thead>
             <tr>

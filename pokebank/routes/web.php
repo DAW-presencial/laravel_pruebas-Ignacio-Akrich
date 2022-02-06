@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PokemonController;
+use Http\Middelware\Authenticate;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +26,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('pokemons', PokemonController::class);
+Route::resource('pokemons', PokemonController::class);/* ->middleware(Authenticate::class, 'redirectTo') */
 
 Route::get('pokemons/create/{lang?}', [PokemonController::class, 'create']);
 
