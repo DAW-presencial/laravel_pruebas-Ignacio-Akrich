@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PokemonRequest;
 use App\Models\Pokemon;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
 
 
 class PokemonController extends Controller
@@ -29,12 +31,12 @@ class PokemonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($lang='en')
     {
+       App::setLocale($lang);
+       session($lang);
         //retornar formulario
         return view('pokemons.create');
-
-
     }
 
     /**
@@ -45,6 +47,12 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
+
+        
+        if($request->hasFile('image')){
+            $image = $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/images',$image);
+        
         //QueryBuilder
         Pokemon::create([
             //nombreCampoDatabase => $request->input('nombreCampoFormulario');
@@ -55,8 +63,34 @@ class PokemonController extends Controller
             'gendre' => $request->input('gendre'),
             'description' => $request->input('description'),
             'shiny' => $request->input('shiny'),
+            'image' => $image,
             'user_id' => Auth::user()->id
+            
         ]);
+    }
+
+        //Eloquent
+   /*   if($request->hasFile('image')){
+            $image = $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/images',$image);
+
+            $pokemon = new Pokemon();
+
+            $pokemon->name = $request->input('name');
+            $pokemon->level = $request->input('level');
+            $pokemon->capture_date = $request->input('capture_date');
+            $pokemon->types = json_encode($request->input('types'));
+            $pokemon->gendre = $request->input('gendre');
+            $pokemon->description = $request->input('description');
+            $pokemon->shiny = $request->input('shiny');
+            $pokemon->image = $image;
+            $pokemon->user_id = Auth::user()->id;
+            $pokemon->save();
+    } */
+
+        //RAW SQL
+        /* $sql = "INSERT INTO pokemons (name, level, capture_date, types, gendre, description, shiny, image, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";*/
+
 
         //redireccionar a la ruta de la lista de pokemons
         return redirect()->route('pokemons.index');
