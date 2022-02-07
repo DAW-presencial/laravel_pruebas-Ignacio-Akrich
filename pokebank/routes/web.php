@@ -30,3 +30,7 @@ Route::resource('pokemons', PokemonController::class);/* ->middleware(Authentica
 
 Route::get('pokemons/create/{lang?}', [PokemonController::class, 'create']);
 
+Route::fallback(function(){
+    return redirect('/dashboard');
+})
+

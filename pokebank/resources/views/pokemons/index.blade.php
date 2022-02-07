@@ -21,9 +21,11 @@
                 <td>{{--  <img src="{{ $pokemon->image }}" alt="{{ $pokemon->name }}" width="100" height="100">  --}}</td>
                 <td> 
                 <form action="{{route('pokemons.destroy',$pokemon->id)}}" method="POST">
+                @can('isAdmin')
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">@lang('Delete')</button>
+                @endcan
                 </form>
                 </td>
             </tr>

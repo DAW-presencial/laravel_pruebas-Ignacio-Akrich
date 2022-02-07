@@ -48,11 +48,6 @@ class PokemonController extends Controller
     public function store(PokemonRequest $request)
     {
 
-        
-        if($request->hasFile('image')){
-            $image = $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/images',$image);
-        
         //QueryBuilder
         Pokemon::create([
             //nombreCampoDatabase => $request->input('nombreCampoFormulario');
@@ -63,11 +58,11 @@ class PokemonController extends Controller
             'gendre' => $request->input('gendre'),
             'description' => $request->input('description'),
             'shiny' => $request->input('shiny'),
-            'image' => $image,
+            'image' =>  $request->hasFile('image') ? $request->file('image')->store('public/images') : '',
             'user_id' => Auth::user()->id
             
         ]);
-    }
+    
 
         //Eloquent
    /*   if($request->hasFile('image')){

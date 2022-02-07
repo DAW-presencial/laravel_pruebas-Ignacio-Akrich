@@ -23,7 +23,8 @@ class CreatePokemonsTable extends Migration
             $table->text('description');
             $table->boolean('shiny');
             $table->timestamps();
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->string('image')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
