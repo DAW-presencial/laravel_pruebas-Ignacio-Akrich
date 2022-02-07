@@ -1,6 +1,6 @@
 @extends('pokemons.layout')
 @section('content')
-<a href="../pokemons/create" class="btn btn-primary">Create</a>
+<a href="{{route('pokemons.creat')}}" class="btn btn-primary">Create</a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -15,13 +15,12 @@
         <tbody>
         @foreach($pokemons as $pokemon)
             <tr>
-                {{--  <td><a href="../pokemons/{{$pokemon->id}}/edit">{{ $pokemon->id}}</a></td>  --}}
                 <td><a href="{{route('pokemons.edit',$pokemon->id)}}">{{ $pokemon->id}}</a></td>
                 <td>{{ $pokemon->name}}</td>
                 <td>{{ $pokemon->types }}</td>
                 <td>{{--  <img src="{{ $pokemon->image }}" alt="{{ $pokemon->name }}" width="100" height="100">  --}}</td>
                 <td> 
-                <form action="../pokemons/{{$pokemon->id}}" method="POST">
+                <form action="{{route('pokemons.destroy')$pokemon->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">@lang('Delete')</button>
