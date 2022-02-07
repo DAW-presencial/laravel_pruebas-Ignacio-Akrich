@@ -15,6 +15,9 @@ use Http\Middelware\Authenticate;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::fallback(function(){
+    return redirect('/dashboard');
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,12 +29,10 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('pokemons', PokemonController::class);/* ->middleware(Authenticate::class, 'redirectTo') */
-
 Route::get('pokemons/create/{lang?}', [PokemonController::class, 'create']);
+Route::get('pokemons/{lang?}', [PokemonController::class, 'index']);
+Route::get('pokemons/{id}/edit/{lang?}', [PokemonController::class, 'edit']);
 
-Route::fallback(function(){
-    return redirect('/dashboard');
-});
+Route::resource('pokemons', PokemonController::class)->middleware(['auth']);
 
 

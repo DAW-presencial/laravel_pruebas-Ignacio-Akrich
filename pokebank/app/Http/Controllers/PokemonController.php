@@ -17,8 +17,11 @@ class PokemonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($lang='en')
     {
+
+        App::setLocale($lang);
+       session($lang);
         //coger los valores de la tabla
         $pokemons = Pokemon::all();
 
@@ -108,8 +111,11 @@ class PokemonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$lang='en')
     {
+
+        App::setLocale($lang);
+        session($lang);
         //cogemos la tabla Pokemon y buscamos el pokemon con el $id
         $pokemon = Pokemon::find($id);
         //pasamos por parametro el pokemon
