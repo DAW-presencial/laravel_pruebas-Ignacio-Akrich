@@ -32,5 +32,6 @@ Route::get('pokemons/create/{lang?}', [PokemonController::class, 'create']);
 
 Route::fallback(function(){
     return redirect('/dashboard');
-})
+});
+
 
