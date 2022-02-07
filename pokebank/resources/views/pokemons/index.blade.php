@@ -15,7 +15,8 @@
         <tbody>
         @foreach($pokemons as $pokemon)
             <tr>
-                <td><a href="../pokemons/{{$pokemon->id}}/edit">{{ $pokemon->id}}</a></td>
+                {{--  <td><a href="../pokemons/{{$pokemon->id}}/edit">{{ $pokemon->id}}</a></td>  --}}
+                <td><a href="{{route('pokemons.edit',$pokemon->id)}}">{{ $pokemon->id}}</a></td>
                 <td>{{ $pokemon->name}}</td>
                 <td>{{ $pokemon->types }}</td>
                 <td>{{--  <img src="{{ $pokemon->image }}" alt="{{ $pokemon->name }}" width="100" height="100">  --}}</td>
