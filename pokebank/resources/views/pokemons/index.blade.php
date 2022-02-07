@@ -20,7 +20,7 @@
                 <td>{{ $pokemon->types }}</td>
                 <td>{{--  <img src="{{ $pokemon->image }}" alt="{{ $pokemon->name }}" width="100" height="100">  --}}</td>
                 <td> 
-                <form action="{{route('pokemons.destroy'),$pokemon->id}}" method="POST">
+                <form action="{{route('pokemons.destroy',$pokemon->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">@lang('Delete')</button>
